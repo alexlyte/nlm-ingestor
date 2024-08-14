@@ -30,8 +30,8 @@ COPY . ./
 RUN pip install --upgrade pip setuptools
 RUN pip install -r requirements.txt
 
-# Install NLTK data (punkt and stopwords)
-RUN python -m nltk.downloader punkt stopwords
+# Install NLTK data (punkt and stopwords) to a specific directory
+RUN python -m nltk.downloader -d /usr/local/share/nltk_data punkt stopwords
 
 # Ensure GitHub SSH key is added
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
