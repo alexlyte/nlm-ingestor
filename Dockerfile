@@ -27,6 +27,7 @@ RUN apt-get install unzip -y && \
 WORKDIR ${APP_HOME}
 COPY . ./
 RUN pip install --upgrade pip setuptools
+RUN python -m nltk.downloader punkt
 RUN apt-get install -y libmagic1
 RUN mkdir -p -m 0600 ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 RUN pip install -r requirements.txt
